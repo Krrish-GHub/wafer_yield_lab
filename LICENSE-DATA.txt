@@ -1,0 +1,4 @@
+The SECOM dataset is not included in this repository. Download it from UCI at runtime.
+UCI lists the dataset under Creative Commons Attribution 4.0 International (CC BY 4.0).
+Citation: McCann, M. & Johnston, A. (2008). SECOM [Dataset]. UCI Machine Learning Repository.
+https://doi.org/10.24432/C54305

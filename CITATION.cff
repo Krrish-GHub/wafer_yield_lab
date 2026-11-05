@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite the UCI dataset and this repository."
+title: "Wafer Yield Lab"
+type: software
+authors:
+  - family-names: Sharma
+    given-names: Krrish
+license: MIT
+repository-code: "https://github.com/Krrish-GHub/wafer-yield-lab"

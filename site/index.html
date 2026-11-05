@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Explore an explainable semiconductor quality-control model trained on the public UCI SECOM dataset.">
+  <meta name="theme-color" content="#111923">
+  <title>Wafer Yield Lab · Process quality, made inspectable</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">W</span><span>WA<span class="accent">FER</span> / LAB</span></a>
+    <div class="topnote"><span class="live-dot"></span> LOCAL MODEL · NO INPUT UPLOAD</div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">INDUSTRIAL ML · UCI SECOM</p>
+      <h1>Can process signals<br><em>flag a yield failure?</em></h1>
+      <p class="intro">A small, inspectable classifier trained on anonymized semiconductor process measurements. Choose a held-out example and see what nudged its score.</p>
+      <div class="hero-meta"><span>1,567 process records</span><i></i><span>590 sensor signals</span><i></i><span>104 failures</span></div>
+    </section>
+
+    <section class="workspace" aria-label="Model explorer">
+      <aside class="sample-panel">
+        <div class="section-head"><div><p class="eyebrow">01 / EXAMPLE</p><h2>Held-out unit</h2></div><span class="sample-count" id="sample-count">loading</span></div>
+        <label for="sample-select">Pick a public test example</label>
+        <select id="sample-select"><option>Loading examples…</option></select>
+        <div class="record-card">
+          <div class="record-id"><span class="mini-led"></span><span id="record-id">—</span></div>
+          <div class="record-facts"><div><span>GROUND TRUTH</span><b id="actual">—</b></div><div><span>SOURCE TIME</span><b id="timestamp">—</b></div></div>
+          <div class="truth-note" id="truth-note">Ground truth is shown for learning; a score is not a verdict.</div>
+        </div>
+        <div class="quality-note"><span class="note-icon">i</span><p>These public examples are from one random holdout. The data is historical; it cannot tell us how a live factory line will behave.</p></div>
+      </aside>
+
+      <section class="result-panel" aria-live="polite">
+        <div class="section-head"><div><p class="eyebrow">02 / MODEL OUTPUT</p><h2>Fail score</h2></div><span class="model-chip">LOGISTIC · 40 SIGNALS</span></div>
+        <div class="score-block"><div class="score-ring" id="score-ring"><div><strong id="score">—</strong><small>MODEL SCORE</small></div></div><div class="score-copy"><span class="eyebrow" id="threshold-label">THRESHOLD · loading</span><h3 id="prediction">Loading model…</h3><p id="score-explainer">This score is not calibrated. The threshold is selected on training-only cross-validation, not a factory cost policy.</p></div></div>
+        <div class="contrib-heading"><div><h3>What moved the score?</h3><p>Largest signed contributions in this fitted linear model</p></div><span class="contrib-key"><i class="pos"></i>toward fail <i class="neg"></i>toward pass</span></div>
+        <div id="contributions" class="contributions"><div class="skeleton">Loading model explanation…</div></div>
+        <p class="contrib-foot">Contribution bars show feature × coefficient effects on the log-odds score for this one example. Sensor IDs are anonymized and have no engineering interpretation here.</p>
+      </section>
+    </section>
+
+    <section class="method-strip">
+      <div><span class="step-num">A</span><div><h3>Compare, don’t cherry-pick</h3><p>Majority baseline, logistic regression, Extra Trees and histogram gradient boosting.</p></div></div>
+      <div><span class="step-num">B</span><div><h3>Respect the rare class</h3><p>Only 104 fails: inspect average precision, fail recall and false alarms—not accuracy alone.</p></div></div>
+      <div><span class="step-num">C</span><div><h3>Keep the split honest</h3><p>Imputation, scaling and feature selection are fit inside the training fold only.</p></div></div>
+    </section>
+    <footer><span>EDUCATIONAL EXPERIMENT · NOT FOR FACTORY DECISIONS</span><span><a href="https://archive.ics.uci.edu/dataset/179/secom" target="_blank" rel="noreferrer">UCI SECOM ↗</a><a href="https://github.com/Krrish-GHub/wafer-yield-lab" target="_blank" rel="noreferrer">SOURCE ↗</a></span></footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
