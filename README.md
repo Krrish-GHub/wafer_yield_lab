@@ -6,7 +6,7 @@ A reproducible machine-learning study of semiconductor process quality: can anon
 
 ## Why this is a useful ML problem
 
-In a real quality-control workflow, a model that catches more failing units may also raise more false alarms. This project makes that trade-off visible instead of hiding the rare fail class behind overall accuracy. It compares a no-skill baseline, a regularized and interpretable logistic model, Extra Trees and histogram gradient boosting. The dataset is small, high-dimensional, imbalanced and incomplete—exactly the kind of conditions that make validation and preprocessing choices matter.
+In a real quality-control workflow, a model that catches more failing units may also raise more false alarms. This project makes that trade-off visible instead of hiding the rare fail class behind overall accuracy. It compares a no-skill baseline, a regularized and interpretable logistic model, Extra Trees and histogram gradient boosting. The dataset is small, high-dimensional, imbalanced, and incomplete, so validation and preprocessing choices matter.
 
 This is an educational offline experiment, not a factory control system or a model suitable for production decisions.
 
